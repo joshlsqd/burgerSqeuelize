@@ -1,35 +1,34 @@
-const express = require('express');
-const burgers = require('../models/burgers.js');
-const router = express.Router();
+const db = require('../models');
 
 
-router.get("/index", function (req,res) {
-   burgers.all(function (err, data) {
+module.exports = function (app) {
 
-       if(err) {return res.status(500).end();}
+    app.get("/index", function (req, res) {
+        db.Burger.findAll({}).then(function (dbBurger) {
+            res.render("index", {burgers: dbBurger});
+        });
+    });
 
-       res.render("index", {burgers: data});
-   });
-});
+    app.post("/index", function (req, res) {
+        console.log(req.body.burger);
+        db.Burger.create({
+            burger_name: req.body.burger
+            }).then( function (dbBurger) {
+            res.json({id: dbBurger.id});
+        })
+    });
 
-router.post("/index", function(req,res) {
-    console.log(req.body.burger);
-    burgers.insert(req.body.burger, function(err,data) {
-        if (err) { return res.status(501).end(); }
-        res.json({ id: data.insertId});
-    })
-});
-
-router.put("/index/:id", function (req,res) {
-    burgers.update(req.params.id, function (err,data) {
-        if (err) {return res.status(500).end(); }
-        if(data.changedRows === 0) {
-            return res.status(404).end();
-        }
-        res.status(200).end();
-    })
-});
-
-
-
-module.exports = router;
+    app.put("/index/:id", function (req, res) {
+        db.Burger.update({
+            devoured: true
+    }, {
+            where: {
+                id: req.params.id
+                 }
+            }).then(function(dbBurger) {
+          res.json(dbBurger);
+        }).catch(function (err) {
+            res.json(err);
+        });
+    });
+};

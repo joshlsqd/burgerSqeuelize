@@ -1,7 +1,6 @@
 {
-  "name": "burger",
+  "name": "burgerssql",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -27,6 +26,10 @@
     "express-handlebars": "^3.0.0",
     "method-override": "^2.3.10",
     "mysql": "^2.15.0",
-    "path": "^0.12.7"
-  }
+    "mysql2": "^1.5.2",
+    "path": "^0.12.7",
+    "sequelize": "^4.34.1"
+  },
+  "devDependencies": {},
+  "description": ""
 }

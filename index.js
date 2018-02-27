@@ -20,7 +20,7 @@ app.set("view engine", "handlebars");
 app.use(express.static('public'));
 
 // include the plan routes from the controller
-app.use(burgerRoutes);
+require("./controllers/burgers_controllers.js")(app);
 
 app.listen(port, function() {
     console.log("listening on port", port);
