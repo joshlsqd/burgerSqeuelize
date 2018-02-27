@@ -1,0 +1,14 @@
+.logo {
+    height: 100px;
+    width: 100px;
+}
+
+.side-borders {
+    padding: 20px;
+    border-left: orange 1px solid;
+    border-right: orange 1px solid;
+}
+
+.lastThird {
+    padding: 20px;
+}

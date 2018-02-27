@@ -1,0 +1,73 @@
+
+
+    <div class="ink-grid">
+        <div class="column-group horizontal-gutters">
+            <div class="all-33 order-1">
+                <img class="logo align-center" src="https://image.freepik.com/free-vector/burger-logo_1366-144.jpg">
+                <h4>Eat-Da-Burger</h4>
+                <form id="newBurger" class="ink-form newBurger" >
+                    <div class="column-group horizontal-gutters">
+                        <!-- Prepend button -->
+                        <div class="control-group all-50 small-100 tiny-100">
+                            <div class="control prepend-button align-center" role="search">
+                                <input type="submit" value="New" class="ink-button">
+                                <span><input type="text" name="burger" id="burger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="all-33 order-2 side-borders">
+                <h4 class="align-center">Burgers</h4>
+                <table class="ink-table alternating">
+                    <thead>
+                    <tr>
+                        <th class="align-left">Name</th>
+                        <th class="align-center">?</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {{#each burgers}}
+                    {{#if this.devoured}}
+                    {{else}}
+                        <tr>
+                            <td>
+                                {{this.burger_name}}
+                            </td>
+                            <td class="align-center">
+                                <button data-devoured="{{this.id}}" class="ink-button orange devour">Devour!</button>
+                            </td>
+                        </tr>
+                    {{/if}}
+                    {{/each}}
+                    </tbody>
+                </table>
+            </div>
+            <div class="all-33 order-3 lastThird">
+                <h4 class="align-center">Devoured!!</h4>
+                <table class="ink-table alternating">
+                    <thead>
+                    <tr>
+                        <th class="align-left">Name</th>
+                        <th class="align-center">Devoured</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {{#each burgers}}
+                        {{#if this.devoured}}
+
+                        <tr>
+                            <td>
+                                {{this.burger_name}}
+                            </td>
+                            <td class="align-center">
+                               <p>Oh yeah</p>
+                            </td>
+                        </tr>
+                        {{/if}}
+                    {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
